@@ -15,18 +15,25 @@ export default {
     };
   },
   methods: {
-    getContents() {
+    search() {
       const urlParams = {
         api_key: this.store.apiKey,
         query: this.store.searchKey
       }
+      this.getMovies(urlParams);
+      this.getSeries(urlParams);
+    },
+    getMovies(urlParams) {
       axios
         .get(this.store.apiMoviesURL, {params: urlParams})
         .then(
           (resp) => {
             this.store.movies = resp.data.results;
+            console.log(resp.data.results);
           }
         )
+    },
+    getSeries(urlParams) {
       axios
         .get(this.store.apiSeriesURL, {params: urlParams})
         .then(
@@ -41,7 +48,7 @@ export default {
 </script>
 
 <template>
-  <AppHeader @search="getContents" />
+  <AppHeader @search="search" />
   <AppMain />
 </template>
 

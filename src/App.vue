@@ -18,6 +18,7 @@ export default {
     search() {
       const urlParams = {
         api_key: this.store.apiKey,
+        language: "it",
         query: this.store.searchKey
       }
       this.getMovies(urlParams);

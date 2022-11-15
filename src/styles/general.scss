@@ -1,6 +1,12 @@
+@use "./partials/variables" as *;
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 
 body {
-    height: 100vh;
+    background-color: $primary-color;
+}
+
+img {
+    // max-width: 100%;
+    max-height: 100%;
 }

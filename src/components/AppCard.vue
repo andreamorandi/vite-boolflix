@@ -46,8 +46,11 @@ export default {
                 </div>
                 <div class="vote">
                     <h5>Voto:&MediumSpace;</h5>
-                    <span v-for="number in Math.ceil(item.vote_average)">
+                    <span v-for="number in Math.ceil(item.vote_average / 2)">
                         <i class="fa-solid fa-star"></i>
+                    </span>
+                    <span v-for="number in 5 - (Math.ceil(item.vote_average / 2))">
+                        <i class="fa-regular fa-star"></i>
                     </span>
                 </div>
                 <div class="overview">

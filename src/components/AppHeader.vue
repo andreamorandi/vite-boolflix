@@ -26,10 +26,12 @@ export default {
 @use "../styles/partials/variables" as *;
 header {
     width: 100%;
+    max-width: 2000px;
     height: 110px;
     position: fixed;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 999;
     @include flex();
     padding: 0 20px;

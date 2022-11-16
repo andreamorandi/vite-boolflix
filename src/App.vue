@@ -40,7 +40,7 @@ export default {
         .then(
           (resp) => {
             this.store.series = resp.data.results;
-            console.log(resp.data.results);
+            console.log(resp.data);
           }
         )
     },

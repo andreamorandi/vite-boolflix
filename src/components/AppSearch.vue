@@ -14,7 +14,7 @@ export default {
 
 <template>
     <div class="search">
-        <input type="text" placeholder="Inserisci film o serie" v-model="store.searchKey">
+        <input type="text" placeholder="Inserisci film o serie" v-model="store.searchKey" @keydown.enter="$emit('search')">
         <button @click="$emit('search')">Cerca</button>
     </div>
 </template>

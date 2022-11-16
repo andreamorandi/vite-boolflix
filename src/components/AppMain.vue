@@ -42,6 +42,7 @@ main {
     color: white;
     background-color: $primary-color;
     h2 {
+        font-size: 2.5rem;
         text-align: center;
         margin-top: 3rem;
         margin-bottom: 2rem;

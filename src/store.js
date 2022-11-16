@@ -8,5 +8,10 @@ export const store = reactive({
     searchKey: "",
     loading: false,
     movies: [],
-    series: []
+    series: [],
+    moviesGenres: [],
+    seriesGenres: [],
+    genresNames: [],
+    filteredMoviesGenres: [],
+    moviesFilter: "",
 });

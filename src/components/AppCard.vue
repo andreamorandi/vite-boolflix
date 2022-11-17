@@ -31,7 +31,7 @@ export default {
                 )
                 .catch(
                     (err) => {
-                        console.log(`Content id ${this.item.id}: cast not found`, err)
+                        console.log(`${this.type} id ${this.item.id}: cast request error`, err)
                     }
                 )
             axios
@@ -43,8 +43,8 @@ export default {
                 )
                 .catch(
                     (err) => {
-                    console.log(`Content id ${this.item.id}: genres not found`, err)
-                    }
+                        console.log(`${this.type} id ${this.item.id}: genres request error`, err)
+                     }
                 )
     },
     computed: {

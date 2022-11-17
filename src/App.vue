@@ -26,6 +26,11 @@ export default {
           this.store.genresNames = resp.data.genres;
         }
       )
+      .catch(
+        (err) => {
+        console.log(`Genres list request error`, err)
+        }
+      )
   },
   methods: {
     search() {
@@ -48,6 +53,11 @@ export default {
             this.getMoviesGenres();
           }
         )
+        .catch(
+          (err) => {
+          console.log(`Movies search error`, err)
+          }
+        )
     },
     getSeries(urlParams) {
       axios
@@ -57,6 +67,11 @@ export default {
             this.store.seriesFilter = "";
             this.store.series = resp.data.results;
             this.getSeriesGenres();
+          }
+        )
+        .catch(
+          (err) => {
+          console.log(`Series search error`, err)
           }
         )
     },

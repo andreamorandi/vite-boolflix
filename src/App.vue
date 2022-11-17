@@ -34,6 +34,7 @@ export default {
         language: "it",
         query: this.store.searchKey
       }
+      this.store.searchKey = "";
       this.getMovies(urlParams);
       this.getSeries(urlParams);
     },
@@ -42,9 +43,9 @@ export default {
         .get(this.store.apiMoviesURL, {params: urlParams})
         .then(
           (resp) => {
+            this.store.moviesFilter = "";
             this.store.movies = resp.data.results;
             this.getMoviesGenres();
-            console.log(resp.data.results);
           }
         )
     },
@@ -53,9 +54,9 @@ export default {
         .get(this.store.apiSeriesURL, {params: urlParams})
         .then(
           (resp) => {
+            this.store.seriesFilter = "";
             this.store.series = resp.data.results;
-            // this.getSeriesGenres();
-            console.log(resp.data);
+            this.getSeriesGenres();
           }
         )
     },
@@ -66,8 +67,17 @@ export default {
           !this.store.moviesGenres.includes(genre_id) ? this.store.moviesGenres.push(genre_id) : '';
         });
       });
-      console.log(this.store.moviesGenres);
       this.filterMoviesGenres();
+      
+    },
+    getSeriesGenres() {
+      this.store.seriesGenres = [];
+      this.store.series.forEach(series => {
+        series.genre_ids.forEach(genre_id => {
+          !this.store.seriesGenres.includes(genre_id) ? this.store.seriesGenres.push(genre_id) : '';
+        });
+      });
+      this.filterSeriesGenres();
     },
     filterMoviesGenres() {
       this.store.filteredMoviesGenres = [];
@@ -75,7 +85,16 @@ export default {
           this.store.genresNames.forEach(genreName => {
               if (genreId === genreName.id) {
                   this.store.filteredMoviesGenres.push({id: genreName.id, name: genreName.name});
-                  console.log(this.store.filteredMoviesGenres);
+              }
+          });
+      });
+    },
+    filterSeriesGenres() {
+      this.store.filteredSeriesGenres = [];
+      this.store.seriesGenres.forEach(genreId => {
+          this.store.genresNames.forEach(genreName => {
+              if (genreId === genreName.id) {
+                  this.store.filteredSeriesGenres.push({id: genreName.id, name: genreName.name});
               }
           });
       });

@@ -13,5 +13,7 @@ export const store = reactive({
     seriesGenres: [],
     genresNames: [],
     filteredMoviesGenres: [],
+    filteredSeriesGenres: [],
     moviesFilter: "",
+    seriesFilter: "",
 });

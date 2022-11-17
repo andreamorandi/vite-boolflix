@@ -5,7 +5,8 @@ import { store } from "../store";
 export default {
     name: "AppCard",
     props: {
-        item: Object
+        item: Object,
+        type: String
     },
     data() {
         return {
@@ -22,19 +23,29 @@ export default {
                 language: "it",
             }
             axios
-                .get(`https://api.themoviedb.org/3/movie/${this.item.id}/credits`, {params: urlParams})
+                .get(`https://api.themoviedb.org/3/${this.type}/${this.item.id}/credits`, {params: urlParams})
                 .then(
                     (resp) => {
                         this.cast = resp.data.cast.slice(0, 5);
                     }
                 )
+                .catch(
+                    (err) => {
+                        console.log(`Content id ${this.item.id}: cast not found`, err)
+                    }
+                )
             axios
-                .get(`https://api.themoviedb.org/3/movie/${this.item.id}`, {params: urlParams})
+                .get(`https://api.themoviedb.org/3/${this.type}/${this.item.id}`, {params: urlParams})
                 .then(
                     (resp) => {
                         this.genres = resp.data.genres;
                     }
-            )
+                )
+                .catch(
+                    (err) => {
+                    console.log(`Content id ${this.item.id}: genres not found`, err)
+                    }
+                )
     },
     computed: {
         getTitle() {

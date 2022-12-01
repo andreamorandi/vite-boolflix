@@ -33,6 +33,11 @@ export default {
 <template>
     <main>
         <div class="container">
+            <div class="instructions" v-if="!store.movies.length && !store.series.length">
+                <h2>Benvenuto in Boolflix!</h2>
+                <h2>Utilizza la barra di ricerca in alto a destra per visualizzare film o serie tv.</h2>
+                <h2>Passa poi sulle card per visulazzarne i dettagli.</h2>
+            </div>
             <section>
                 <div class="heading" v-if="store.movies.length">
                     <h2>Film</h2>
@@ -75,6 +80,19 @@ main {
     background-color: $primary-color;
     section:nth-child(2) {
         margin-top: 2rem;
+    }
+    .instructions {
+        h2 {
+            font-size: 2.25rem;
+            text-align: center;
+            margin: 0 3vw;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            padding-top: .5rem;
+        }
+        h2:first-child {
+            margin-top: 3rem;
+        }
     }
     .heading {
         width: calc(100% - 5vw);

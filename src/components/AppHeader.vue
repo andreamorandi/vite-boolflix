@@ -6,17 +6,17 @@ export default {
     components: {
         AppSearch
     },
-    data() {
-        return {
-
-        };
-    },
+    methods: {
+        getImagePath(image) {
+            return new URL(`../assets/img/${image}`, import.meta.url).href;
+        },
+    }
 };
 </script>
 
 <template>
     <header>
-        <img src="https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="netflix logo">
+        <img :src="getImagePath('logo.png')" alt="boolflix logo">
         <AppSearch @search="$emit('search')" class="w-50 d-flex justify-content-end"/>
     </header>
 </template>
